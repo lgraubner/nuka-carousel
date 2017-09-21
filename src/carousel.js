@@ -188,34 +188,34 @@ const Carousel = createReactClass({
             {children}
           </ul>
         </div>
-        {this.props.decorators
-          ? this.props.decorators.map(function(Decorator, index) {
-              return (
-                <div
-                  style={assign(
-                    self.getDecoratorStyles(Decorator.position),
-                    Decorator.style || {}
-                  )}
-                  className={'slider-decorator-' + index}
-                  key={index}
-                >
-                  <Decorator.component
-                    currentSlide={self.state.currentSlide}
-                    slideCount={self.state.slideCount}
-                    frameWidth={self.state.frameWidth}
-                    slideWidth={self.state.slideWidth}
-                    slidesToScroll={self.state.slidesToScroll}
-                    cellSpacing={self.props.cellSpacing}
-                    slidesToShow={self.props.slidesToShow}
-                    wrapAround={self.props.wrapAround}
-                    nextSlide={self.nextSlide}
-                    previousSlide={self.previousSlide}
-                    goToSlide={self.goToSlide}
-                  />
-                </div>
-              );
-            })
-          : null}
+        {this.props.decorators ? (
+          this.props.decorators.map(function(Decorator, index) {
+            return (
+              <div
+                style={assign(
+                  self.getDecoratorStyles(Decorator.position),
+                  Decorator.style || {}
+                )}
+                className={'slider-decorator-' + index}
+                key={index}
+              >
+                <Decorator.component
+                  currentSlide={self.state.currentSlide}
+                  slideCount={self.state.slideCount}
+                  frameWidth={self.state.frameWidth}
+                  slideWidth={self.state.slideWidth}
+                  slidesToScroll={self.state.slidesToScroll}
+                  cellSpacing={self.props.cellSpacing}
+                  slidesToShow={self.props.slidesToShow}
+                  wrapAround={self.props.wrapAround}
+                  nextSlide={self.nextSlide}
+                  previousSlide={self.previousSlide}
+                  goToSlide={self.goToSlide}
+                />
+              </div>
+            );
+          })
+        ) : null}
         <style
           type="text/css"
           dangerouslySetInnerHTML={{ __html: self.getStyleTagStyles() }}
@@ -942,7 +942,7 @@ const Carousel = createReactClass({
         );
       }
 
-      if (index <= slidesAfter - 1) {
+      if (index <= slidesAfter - 3) {
         return (
           (this.state.slideWidth + this.props.cellSpacing) *
           (this.state.slideCount + index)
